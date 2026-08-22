@@ -1,4 +1,46 @@
 # Real-Time Air Quality Monitoring Pipeline (Accra)
+
+```text
+README.md                       # high-level overview + quickstart (update)
+workflow.png                     # architecture diagram (keep)
+pipelines/
+  streaming_pipeline.py         # Beam (Dataflow) streaming pipeline
+  batch_backfill.py             # optional batch/backfill pipeline
+  requirements.txt              # pinned deps for pipelines
+  Dockerfile                    # Docker image for pipeline workers (optional)
+publisher/
+  simulator.py                  # multi-device publisher / simulator (configurable)
+  publisher_requirements.txt
+  Dockerfile
+infra/
+  terraform/
+    main.tf                     # create Pub/Sub topics, subscriptions, BigQuery dataset/table, storage bucket, service accounts
+    variables.tf
+    outputs.tf
+  gcloud/                       # optional gcloud deployment scripts
+configs/
+  dev.yaml                      # configuration for local/dev
+  prod.yaml                     # production parameters (PROJECT_ID, TOPIC, BUCKET, etc.)
+samples/
+  air_quality_data.jsonl        # sample events for tests/simulation
+  sample_avro_schema.avsc       # example schema (or .proto)
+docs/
+  architecture.md               # expanded architecture + design decisions
+  runbook.md                    # run, monitor, troubleshoot, cost/runbook
+  monitoring.md                 # dashboards/alerts to create
+dashboards/
+  tableau/                      # dashboard notes / exports or metadata
+scripts/
+  run_local_emulator.sh         # start pubsub emulator, local BigQuery emulator, etc.
+  deploy_dataflow.sh            # convenience script to launch Dataflow job
+tests/
+  test_transforms.py            # unit tests for Beam transforms (DirectRunner)
+  test_publisher.py
+.github/
+  workflows/
+    ci.yml                      # unit tests, linting, build
+LICENSE
+```
 ### Overview
 A real-time data streaming pipeline to monitor air quality across the city of Accra, using simulated IoT sensor data. The system ingests, transforms, stores, and visualizes environmental data (PM2.5, PM10, CO, NO₂, O₃, temperature, humidity) in real time.
 
