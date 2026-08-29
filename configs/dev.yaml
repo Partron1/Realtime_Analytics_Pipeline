@@ -1,0 +1,24 @@
+# Development Configuration
+gcp:
+  project_id: "tekstain-25"
+  region: "us-central1"
+
+pubsub:
+  topic_id: "air-quality"
+  subscription_id: "air-quality-sub-dev"
+
+dataflow:
+  job_name: "air-quality-dev"
+  runner: "DataflowRunner"
+  temp_location: "gs://teckflow_bucket/temp/"
+  staging_location: "gs://teckflow_bucket/staging/"
+
+bigquery:
+  project_id: "tekstain-25"
+  dataset_id: "pollution"
+  table_id: "air_quality"
+
+simulator:
+  delay_seconds: 1
+  num_devices: 5
+  input_file: "samples/air_quality_data.jsonl"

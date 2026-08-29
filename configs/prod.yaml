@@ -1,0 +1,26 @@
+# Production Configuration
+gcp:
+  project_id: "tekstain-25"
+  region: "us-central1"
+
+pubsub:
+  topic_id: "air-quality-prod"
+  subscription_id: "air-quality-sub-prod"
+
+dataflow:
+  job_name: "air-quality-prod"
+  runner: "DataflowRunner"
+  temp_location: "gs://teckflow_bucket_prod/temp/"
+  staging_location: "gs://teckflow_bucket_prod/staging/"
+  num_workers: 10
+  max_num_workers: 20
+
+bigquery:
+  project_id: "tekstain-25"
+  dataset_id: "pollution_prod"
+  table_id: "air_quality"
+
+simulator:
+  delay_seconds: 1
+  num_devices: 50
+  input_file: "samples/air_quality_data.jsonl"
