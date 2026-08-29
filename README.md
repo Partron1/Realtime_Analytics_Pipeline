@@ -1,45 +1,33 @@
 # Real-Time Air Quality Monitoring Pipeline (Accra)
 
 ```text
-README.md                       # high-level overview + quickstart (update)
-workflow.png                     # architecture diagram (keep)
+README.md                 # short quickstart + links to docs
 pipelines/
-  streaming_pipeline.py         # Beam (Dataflow) streaming pipeline
-  batch_backfill.py             # optional batch/backfill pipeline
-  requirements.txt              # pinned deps for pipelines
-  Dockerfile                    # Docker image for pipeline workers (optional)
+  streaming.py            # Beam streaming pipeline (Pub/Sub → transform → BigQuery)
 publisher/
-  simulator.py                  # multi-device publisher / simulator (configurable)
-  publisher_requirements.txt
-  Dockerfile
+  simulator.py            # multi-device event simulator (publishes to Pub/Sub)
+configs/
+  dev.yaml                # example values for local/dev
+  prod.yaml               # example values for prod
+samples/
+  air_quality_data.jsonl   # sample events for simulation
 infra/
   terraform/
-    main.tf                     # create Pub/Sub topics, subscriptions, BigQuery dataset/table, storage bucket, service accounts
+    main.tf
     variables.tf
     outputs.tf
-  gcloud/                       # optional gcloud deployment scripts
-configs/
-  dev.yaml                      # configuration for local/dev
-  prod.yaml                     # production parameters (PROJECT_ID, TOPIC, BUCKET, etc.)
-samples/
-  air_quality_data.jsonl        # sample events for tests/simulation
-  sample_avro_schema.avsc       # example schema (or .proto)
 docs/
-  architecture.md               # expanded architecture + design decisions
-  runbook.md                    # run, monitor, troubleshoot, cost/runbook
-  monitoring.md                 # dashboards/alerts to create
+  architecture.md
+  runbook.md
 dashboards/
-  tableau/                      # dashboard notes / exports or metadata
+  tableau/                # dashboard notes / connection instructions
 scripts/
-  run_local_emulator.sh         # start pubsub emulator, local BigQuery emulator, etc.
-  deploy_dataflow.sh            # convenience script to launch Dataflow job
+  run_local_emulator.sh
+  deploy_dataflow.sh
 tests/
-  test_transforms.py            # unit tests for Beam transforms (DirectRunner)
-  test_publisher.py
-.github/
-  workflows/
-    ci.yml                      # unit tests, linting, build
-LICENSE
+  test_transforms.py
+.gitignore
+requirements.txt
 ```
 ### Overview
 A real-time data streaming pipeline to monitor air quality across the city of Accra, using simulated IoT sensor data. The system ingests, transforms, stores, and visualizes environmental data (PM2.5, PM10, CO, NO₂, O₃, temperature, humidity) in real time.
