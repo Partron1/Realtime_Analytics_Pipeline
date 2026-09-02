@@ -27,7 +27,6 @@
 ├── scripts
 │   ├── deploy_dataflow.sh
 │   └── run_local_emulator.sh
-├── structure.md
 ├── tests
 │   └── test_transforms.py
 └── workflow.png
