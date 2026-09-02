@@ -1,5 +1,39 @@
 # Real-Time Air Quality Monitoring Pipeline (Accra)
 
+## Project Structure
+
+```text
+.
+├── .gitignore
+├── README.md
+├── configs
+│   ├── dev.yaml
+│   └── prod.yaml
+├── docs
+│   ├── archetecture.md
+│   └── rundbook.md
+├── infra
+│   └── terraform
+│       ├── main.tf
+│       ├── outputs.tf
+│       └── variables.tf
+├── pipelines
+│   └── streaming.py
+├── publisher
+│   └── simulator.py
+├── requirements.txt
+├── samples
+│   └── air_quality_data.json
+├── scripts
+│   ├── deploy_dataflow.sh
+│   └── run_local_emulator.sh
+├── structure.md
+├── tests
+│   └── test_transforms.py
+└── workflow.png
+```
+
+
 ### Overview
 A real-time data streaming pipeline to monitor air quality across the city of Accra, using simulated IoT sensor data. The system ingests, transforms, stores, and visualizes environmental data `(PM2.5, PM10, CO, NO₂, O₃, temperature, humidity)` in real time.
 
@@ -21,3 +55,4 @@ IoT sensors (or the software that manages it, like Raspberry Pi, Arduino, or edg
 Note: *For this project I did not have a real-time streaming data from any IoT sensor so I used a local file as a streaming source **(batch-to-stream trick)***
 
 Python script to read the file line by line and publish each row into Pub/Sub (with a delay e.g., 1 sec per row). These mimics streaming, even though the source is a static file.
+
