@@ -1,4 +1,4 @@
-# Real-Time Air Quality Monitoring Pipeline (Accra)
+# Real-Time Air Quality Monitoring Pipeline
 
 ## Project Structure
 
