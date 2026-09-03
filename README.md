@@ -38,7 +38,7 @@ A real-time data streaming pipeline to monitor air quality across the city of Ac
 
 **Source:** IoT sensors in cities stream air quality data (timestamp, location, PM2.5, PM10, CO, NO2, O3, temperature and humidity levels every few seconds)
 
-- In this project I used Pub/sub to BigQuery 
+- In this project Pub/sub to BigQuery was used 
   
 The Pub/sub template is a streaming pipeline that can read JSON-formatted messages from a Pub/Sub topic and write them to a BigQuery table 
 
@@ -51,7 +51,7 @@ IoT Sensors (Simulated) →  Pub/Sub →  Dataflow (UDF Transform) →  BigQuery
 
 IoT sensors (or the software that manages it, like Raspberry Pi, Arduino, or edge gateway) sends HTTP or gRPC request to Pub/Sub APIs.
 
-Note: *For this project I did not have a real-time streaming data from any IoT sensor so I used a local file as a streaming source **(batch-to-stream trick)***
+Note: *For this project no real-time streaming data from any IoT sensor so a local file as a streaming source is used **(batch-to-stream trick)***
 
-Python script to read the file line by line and publish each row into Pub/Sub (with a delay e.g., 1 sec per row). These mimics streaming, even though the source is a static file.
+Python script read the file line by line and published each row into Pub/Sub (with a delay e.g., 1 sec per row). This mimics streaming, even though the source is a static file.
 
